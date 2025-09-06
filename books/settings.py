@@ -85,3 +85,9 @@ DOWNLOAD_DELAY = 1
 
 # Set settings whose default value is deprecated to a future-proof value
 FEED_EXPORT_ENCODING = "utf-8"
+
+ITEM_PIPELINES = {
+    'books.pipelines.CouchDBPipeline': 300,
+}
+COUCHDB_URI = 'http://admin:admin@localhost:5984/'
+COUCHDB_DB = 'books'
