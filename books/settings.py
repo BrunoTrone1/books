@@ -7,6 +7,11 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+import os
+from dotenv import load_dotenv, dotenv_values
+
+load_dotenv()
+
 BOT_NAME = "books"
 
 SPIDER_MODULES = ["books.spiders"]
@@ -89,5 +94,5 @@ FEED_EXPORT_ENCODING = "utf-8"
 ITEM_PIPELINES = {
     'books.pipelines.CouchDBPipeline': 300,
 }
-COUCHDB_URI = 'http://admin:admin@localhost:5984/'
-COUCHDB_DB = 'books'
+COUCHDB_URI = os.getenv('COUCHDB_URI')
+COUCHDB_DB = os.getenv('COUCHDB_DB')

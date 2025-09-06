@@ -6,7 +6,6 @@
 
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
-# Base de datos CouchDB
 import couchdb
 import os
    
@@ -30,7 +29,7 @@ class CouchDBPipeline:
             self.db = self.server[self.couchdb_db] 
 
     def close_spider(self, spider):
-        pass
+        self.server.logout()
 
     def process_item(self, item, spider):
         adapter = ItemAdapter(item)
